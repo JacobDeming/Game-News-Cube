@@ -1,10 +1,10 @@
 {
-  "name": "mongo_homework",
+  "name": "game-news-cube",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gaming News Scraper for Gamasutra",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node server.js"
   },
   "author": "",
   "license": "ISC",
