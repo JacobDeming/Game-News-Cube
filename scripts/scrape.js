@@ -7,14 +7,13 @@ var scrape = function(url, cb) {
             var $ = cheerio.load(body);
             var obj = {};
             $('.feed_item').each(function(i, element){
-              var head = $(this).find(".story_title").text();
-              var sum=($(this).html().split('<br>')[2]);
-              if (head !== "" && sum !== ""){
-                var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-                var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-                obj[i] = [headNeat];
-                obj[i].push(sumNeat);}});
-            console.log(obj);
+              var art = $(this).find(".story_title").text();
+              var sum = ($(this).html().split('<br>')[2]);
+              if (art !== "" && sum !== ""){
+                var article = art.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
+                var summary = sum.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
+                obj[i] = [article];
+                obj[i].push(summary);}});
             cb(obj);});}};
 
 module.exports = scrape;
