@@ -1,7 +1,7 @@
 var scrape = require('../scripts/scrape.js');
 var makeDate = require('../scripts/date.js');
-var Headline = require('../models/Headline');
-var Note = require('../models/Note');
+var Article = require('../models/Article.js');
+var Note = require('../models/Note.js');
 
 exports.fetch = function() {
   scrape("http://www.gamasutra.com/updates", function(data) {
@@ -10,20 +10,20 @@ exports.fetch = function() {
     for (var i in obj) {
       noneFound(i);}
     function noneFound(current) {
-      Headline.findOne({
-        'headline': obj[current][0]}, function(err, res) {
+      Article.findOne({
+        'article': obj[current][0]}, function(err, res) {
         if (err) {
           console.log(err);}
         if (res === null) {
-          var headlineEntry = new Headline({
-            headline: obj[current][0],
+          var articleEntry = new Article({
+            article: obj[current][0],
             summary: obj[current][1],
             date: date});
-          headlineEntry.save(function(err) {
+          articleEntry.save(function(err) {
             if (err) {}
             else {
               console.log('successfully added');}});}});}});};
 
 exports.check = function(cb) {
-  Headline.find().sort({_id: -1}).exec(function(err, doc) {
+  Article.find().sort({_id: -1}).exec(function(err, doc) {
       cb(doc);});};

@@ -10,7 +10,7 @@ mongoose.connect(db, function(err){
   else {
     console.log('mongoose connected!');}});
 
-app.use(express.static(__dirname +'/public'));
+app.use(express.static(__dirname +'/views/public'));
 var port = 3000;
 
 var expressHandlebars = require('express-handlebars');

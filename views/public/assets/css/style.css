@@ -61,12 +61,12 @@ h1{
 
 #GameCube { transition: transform 2s; }
 
-#headline{
+#article{
 	color: white;
 	font-size: 40px;
 	opacity: .85;}
 
-#headline, #summary{
+#article, #summary{
 	color: white;
 	font-weight: bold;
 	font-size: 26px;
@@ -103,6 +103,7 @@ h1{
 	margin-top:2%;}
 
 #notes {
+	color: purple;
 	background-color: black;
     font-size: 20px;
     opacity: .58;

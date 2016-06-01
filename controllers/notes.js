@@ -1,11 +1,11 @@
 var makeDate = require('../scripts/date.js');
-var Headline = require('../models/Headline');
+var Article = require('../models/Article');
 var Note = require('../models/Note');
 
 exports.save = function(data, cb) {
   var formattedDate = makeDate();
         var newNote = new Note ({
-          _headlineId:data.id,
+          _articleId:data.id,
           date:data.date,
           noteText:data.note});
         newNote.save(function(err, doc){
@@ -16,7 +16,7 @@ exports.save = function(data, cb) {
           cb(doc);}});};
   exports.gather = function(data, cb) {
       Note.find({
-          _headlineId: data.id})
+          _articleId: data.id})
       .sort({
         id: -1})
       .exec(function(err, doc) {
@@ -24,7 +24,7 @@ exports.save = function(data, cb) {
 
   exports.delete = function(data, cb) {
       Note.remove({
-        _headlineId:data.id}, function(err, removed){
+        _articleId:data.id}, function(err, removed){
         if(err){
           console.log(err);}
         else {

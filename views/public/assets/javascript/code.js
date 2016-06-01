@@ -6,8 +6,6 @@ var mongoStuff;
 var count = 0;
 var dateTime;
 var state = 0;
-var rotate = ['moveFront', 'moveBack', 'moveRight', 'moveLeft', 'moveTop', 'moveBottom'];
-var cubeSide = ['back', 'right', 'left', 'top', 'bottom', 'front'];
 
 var startPage = function() {
   $.getJSON('/checkMongo', function(data) {
@@ -18,6 +16,7 @@ var startPage = function() {
 
 var getMongo = function() {
   var idCount = count - 1;
+  console.log(mongoStuff[idCount]);
   $.ajax({
     type: "POST",
     dataType: "json",
@@ -28,6 +27,7 @@ var getMongo = function() {
   .fail(function() {});};
 
 var postNote = function(currentNotes) {
+  console.log(currentNotes);
   $("#notes").val("");
   var note = "";
   for (var i = 0; i < currentNotes.length; i++) {
@@ -60,8 +60,11 @@ var deleteNote = function() {
         id: mongoStuff[idCount]._id,}}).done(function() {
       $("#notes").val("");}).fail(function(){});});};
 
+var rotate = ['moveFront', 'moveBack', 'moveRight', 'moveLeft', 'moveTop', 'moveBottom'];
+var cubeSide = ['back', 'right', 'left', 'top', 'bottom', 'front'];
+
 var typePost = function() {
-  $("#headline").remove();
+  $("#article").remove();
   $("#summary").remove();
   var h = 0;
   var s = 0;
@@ -70,17 +73,17 @@ var typePost = function() {
     side = state - 1;}
   else {
     side = 5;}
-  $("." + cubeSide[side]).append("<div id='headline'></div>");
+  $("." + cubeSide[side]).append("<div id='article'></div>");
   $("." + cubeSide[side]).append("<div id='summary'></div>");
-  var headline = mongoStuff[count].headline;
+  var article = mongoStuff[count].article;
   var summary = mongoStuff[count].summary;
   count++;
   (function type() {
-    printHeadline = headline.slice(0, ++h);
+    printArticle = article.slice(0, ++h);
     printSummary = summary.slice(0, ++s);
-    $("#headline").text(printHeadline);
+    $("#article").text(printArticle);
     $("#summary").html(printSummary);
-    if (printHeadline.length === headline.length && printSummary.length === summary.length) {
+    if (printArticle.length === article.length && printSummary.length === summary.length) {
       return;}
     setTimeout(type, 20);}());};
 

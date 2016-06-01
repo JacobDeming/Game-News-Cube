@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var headlineSchema = new Schema({
-    headline: {
+var ArticleSchema = new Schema({
+    article: {
       type: String,
       required: true},
     summary:{
@@ -11,5 +11,5 @@ var headlineSchema = new Schema({
     date: String,});
 
 
-var Headline = mongoose.model('Headline', headlineSchema);
-module.exports = Headline;
+var Article = mongoose.model('article', ArticleSchema);
+module.exports = Article;
