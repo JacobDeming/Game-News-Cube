@@ -1,0 +1,133 @@
+html{
+	height:100%;
+	background-color: black;}
+
+body {
+	width:1024px;
+	height: 100%;
+	margin:0 auto;}
+
+h1{
+	padding-top: 20px;
+	width: 600px;
+	margin: auto;
+	color: purple;
+	font-size: 60px;}
+
+.container {
+  width: 400px;
+  height: 100%;
+  margin:2% auto;
+  position: relative;
+  perspective: 1000px;}
+
+#GameCube {
+	margin:8% auto 0 auto;
+  	width: 400px;
+  	height: 400px;
+  	transform-style: preserve-3d;
+  	transform: translateZ( -100px );}
+
+#GameCube figure {
+  margin: 0;
+  width: 400px;
+  height: 400px;
+  display: block;
+  position: absolute;
+  border: 3px solid magenta;
+  cursor: pointer;
+  overflow: auto;}
+
+#faces{
+	background-color: purple;
+	opacity: 0.075;
+	width: 400px;
+	height: 400px;
+	position: absolute;}
+
+#GameCube .front  { transform: rotateY(   0deg ) translateZ( 202px ); }
+#GameCube .back   { transform: rotateX( 180deg ) translateZ( 202px ); }
+#GameCube .right  { transform: rotateY(  90deg ) translateZ( 202px ); }
+#GameCube .left   { transform: rotateY( -90deg ) translateZ( 202px ); }
+#GameCube .top    { transform: rotateX(  90deg ) translateZ( 202px ); }
+#GameCube .bottom { transform: rotateX( -90deg ) translateZ( 202px ); }
+
+#GameCube.moveFront  { transform: translateZ( -100px ) rotateY(    0deg ); }
+#GameCube.moveBack   { transform: translateZ( -100px ) rotateX( -180deg ); }
+#GameCube.moveRight  { transform: translateZ( -100px ) rotateY(  -90deg ); }
+#GameCube.moveLeft   { transform: translateZ( -100px ) rotateY(   90deg ); }
+#GameCube.moveTop    { transform: translateZ( -100px ) rotateX(  -90deg ); }
+#GameCube.moveBottom { transform: translateZ( -100px ) rotateX(   90deg ); }
+
+#GameCube { transition: transform 2s; }
+
+#headline{
+	color: white;
+	font-size: 40px;
+	opacity: .85;}
+
+#headline, #summary{
+	color: white;
+	font-weight: bold;
+	font-size: 26px;
+	line-height:38px;
+	z-index: 10;
+	padding:20px;}
+
+#summary{
+	padding-top: 0;}
+
+#inputBox{
+	float:left;
+	margin-top:2%;}
+
+#input input[type="text"], textarea {
+	color: purple;
+	background-color : black;
+    text-align: left;
+    padding-top: 1px;
+    width: 200px;
+    height: 300px;
+    font-size: 20px;
+    opacity: .78;}
+
+#note {
+  color: black;
+  opacity: .45;
+	background-color : purple;
+	width: 200px;
+	height: 110px;}
+
+#save {
+	float:right;
+	margin-top:2%;}
+
+#notes {
+	background-color: black;
+    font-size: 20px;
+    opacity: .58;
+    width: 200px;
+    height: 300px;}
+
+#delete {
+    color: black;
+    opacity: .65;
+	background-color : purple;
+	width: 200px;
+	height: 110px;
+	cursor: pointer;}
+
+.button {
+	width: 80px;
+	height: 80px;
+	display:block;
+	margin:0px auto;
+	padding:10px;
+	cursor: pointer;}
+
+@media screen and (min-height:900px) {
+	.container, #input-area, #saved-area{
+		margin-top: 20%;}
+
+	#GameCube {
+		margin-top: 15%;}}
